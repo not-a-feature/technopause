@@ -18,9 +18,9 @@ Based on:
 - (Optional) 5v PowerJack 2X5.5MM 
 
 # Setup
-- Copy your song to a microSD card (Name of file: 0001.mp3 or 0001.wav)
+- Copy your songs to a microSD card into the folder: 'MP3' (Name of files: 0001.mp3 or 0001.wav)
 - Wire everything like the scematics
-- Modify the two parameters (Pause between two 'Technopause' and length of song in ms)
+- Modify the two parameters (Pause between two 'Technopause' in ms and number of songs)
 - Put it in a nice case
 - Done
 
