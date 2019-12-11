@@ -4,9 +4,12 @@
 
 #define BUTTON_PIN A0 //Pin A0
 boolean playing = false;
+unsigned long previousMillis = 0; 
+
+  
 //Customize----------------------------------------------------------------------------------------------------------------------------
-const int pause = 600000; // Pause between technopause in ms(10 min = 600000)
-const int songLen = 48274; // Length of song in ms (in our case 48274)
+const long pause = 900000; // Pause between technopause in ms(15 min = 600000)
+const int number = 1; // Number of songs (up to 65534)
 //End Customize------------------------------------------------------------------------------------------------------------------------
 
 SoftwareSerial softSerial(10, 11); // RX, TX
@@ -33,6 +36,8 @@ void setup() {
   Serial.println("MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.");
   //Serial.println("See https://github.com/not-a-feature/technopause/blob/master/LICENSE for more. details.");
   Serial.println("--------------------------------------------------------------------------------------------------");
+
+  randomSeed(analogRead(A2));
   
   if (!mp3.begin(softSerial)) {  //Use softwareSerial to communicate with mp3.
     Serial.println(F("Unable to begin:"));
@@ -41,22 +46,19 @@ void setup() {
     while(true);
   }
   mp3.volume(15);
-
 }
 
 void loop() {
   buttonStatus();
-  if(playing) {
-    play();
+  unsigned long currentMillis = millis()+pause;
+  
+  if(playing && (currentMillis - previousMillis >= pause)) {
+    previousMillis = currentMillis;
     playing = false;
-    delay(pause);
+    int randNum = random(1,number+1);
+    mp3.playMp3Folder(randNum);
+    Serial.println("technopause ---- Playing: " + String(randNum));
   }
-}
-
-void play() {
-  mp3.play(1);
-  Serial.println("technopause");
-  delay(songLen);
 }
 
 
@@ -70,4 +72,5 @@ void buttonStatus() {
   else {
     playing = false;
   }
+  delay(10);
 }
