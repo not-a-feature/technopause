@@ -1,11 +1,21 @@
 # technopause
 Emergecy button for a quick TECHNOPAUSE
-Plays a mp3 or wav after the 'emergency button' was hit
+
+Plays a random mp3 or wav after the 'emergency button' was hit
 
 Based on:
 - Arduino Uno (or any other Micro Controller)
 - DFPlayer Mini
-- a button 
+
+# Used Parts
+- Arduino Uno (or any other Micro Controller)
+- DFPlayer Mini
+- Mirco SD Card
+- Emergency Button (wich closes the circuit)
+- 2x 1kOhm Resistors
+- Audio Jack
+- (Optional) Switch
+- (Optional) 5v PowerJack 2X5.5MM 
 
 # Setup
 - Copy your song to a microSD card (Name of file: 0001.mp3 or 0001.wav)
@@ -13,8 +23,12 @@ Based on:
 - Modify the two parameters (Pause between two 'Technopause' and length of song in ms)
 - Put it in a nice case
 - Done
+
 # Wiring Schematics
 <img src="/schematics.png" alt="Wiring schematics" height="400px">
+
+# Final Build
+<img src="/case.jpg" alt="Beautiful case" height="400px">
 
 # License
 ```
